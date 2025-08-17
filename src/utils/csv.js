@@ -4,9 +4,9 @@ import { createObjectCsvWriter } from "csv-writer";
 const REPO_COLLECTION = "repos";
 
 /**
- * Export repos for an org to CSV
- * @param {string} org - organization name
- * @param {string} outFile - output file path
+ 
+ * @param {string} org 
+ * @param {string} outFile
  */
 export async function exportReposCSV(org, outFile) {
   const db = await connectDB();

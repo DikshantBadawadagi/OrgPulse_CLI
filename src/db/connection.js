@@ -12,12 +12,12 @@ let client;
 let db;
 
 export async function connectDB() {
-  if (db) return db; // reuse existing connection
+  if (db) return db; 
 
   client = new MongoClient(uri);
   await client.connect();
 
-  db = client.db(); // uses DB from URI
+  db = client.db(); 
   console.log("✅ Connected to MongoDB Atlas");
   return db;
 }

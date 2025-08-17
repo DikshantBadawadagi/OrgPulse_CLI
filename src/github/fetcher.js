@@ -110,7 +110,8 @@ import { upsertIssue } from "../db/issues.js";
 import Redis from "ioredis";
 
 let redis;
-if (process.env.REDIS_URL) {
+// Avoid connecting to Redis during tests to prevent noise and listener leaks
+if (process.env.REDIS_URL && process.env.NODE_ENV !== 'test') {
   redis = new Redis(process.env.REDIS_URL);
   redis.on("connect", () => console.log("✅ Connected to Redis"));
   redis.on("error", (err) => console.warn("⚠️ Redis connection error:", err.message));

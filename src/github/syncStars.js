@@ -2,9 +2,7 @@ import axios from "axios";
 import { connectDB } from "../db/connection.js";
 import { upsertRepo } from "../db/repos.js";
 
-/**
- * Get Axios GitHub client with optional token
- */
+
 function getGithubClient() {
   const headers = {};
   if (process.env.GITHUB_TOKEN) {
@@ -17,8 +15,7 @@ function getGithubClient() {
 }
 
 /**
- * Refresh stars/forks for existing repos of an org
- * @param {string} org - organization name
+ * @param {string} org 
  */
 export async function syncStars(org) {
   const db = await connectDB();
