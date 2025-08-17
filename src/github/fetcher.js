@@ -288,6 +288,6 @@ export async function fetchOrgData(org, since) {
     }
   );
 
-  console.log("✅ All repos + issues fetched and stored.");
+  console.log("All repos + issues fetched and stored.");
 }
 
