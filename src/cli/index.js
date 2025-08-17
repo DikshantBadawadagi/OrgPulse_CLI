@@ -19,7 +19,6 @@ program
   .description("CLI to fetch GitHub data and store in MongoDB")
   .version("0.1.0");
 
-// ---------- INIT ----------
 program
   .command("init")
   .description("Connect to MongoDB and create indexes")
@@ -69,37 +68,37 @@ program
     }
   });
 
-// program
-//   .command("export")
-//   .description("Export repos to CSV")
-//   .requiredOption("--org <org>", "Organization name")
-//   .requiredOption("--out <file>", "Output CSV file")
-//   .action(async (options) => {
-//     try {
-//       await connectDB();
-//       await exportReposCSV(options.org, options.out);
-//       console.log(`✅ Repos exported to ${options.out}`);
-//     } catch (err) {
-//       console.error("❌ Export failed:", err.message);
-//     } finally {
-//       await closeDB();
-//     }
-//   });
+program
+  .command("export")
+  .description("Export repos to CSV")
+  .requiredOption("--org <org>", "Organization name")
+  .requiredOption("--out <file>", "Output CSV file")
+  .action(async (options) => {
+    try {
+      await connectDB();
+      await exportReposCSV(options.org, options.out);
+      console.log(`✅ Repos exported to ${options.out}`);
+    } catch (err) {
+      console.error("❌ Export failed:", err.message);
+    } finally {
+      await closeDB();
+    }
+  });
 
-// program
-//   .command("sync-stars")
-//   .description("Refresh stars/forks for existing repos")
-//   .requiredOption("--org <org>", "Organization name")
-//   .action(async (options) => {
-//     try {
-//       await connectDB();
-//       await syncStars(options.org);
-//       console.log(`✅ Stars/forks synced for ${options.org}`);
-//     } catch (err) {
-//       console.error("❌ Sync-stars failed:", err.message);
-//     } finally {
-//       await closeDB();
-//     }
-//   });
+program
+  .command("sync-stars")
+  .description("Refresh stars/forks for existing repos")
+  .requiredOption("--org <org>", "Organization name")
+  .action(async (options) => {
+    try {
+      await connectDB();
+      await syncStars(options.org);
+      console.log(`✅ Stars/forks synced for ${options.org}`);
+    } catch (err) {
+      console.error("❌ Sync-stars failed:", err.message);
+    } finally {
+      await closeDB();
+    }
+  });
 
 program.parse();
