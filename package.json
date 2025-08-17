@@ -11,7 +11,9 @@
   "test:watch": "jest --watchAll",
   "test:with-mongo": "node scripts/start-test-mongo.js"
   },
-
+  "bin": {
+    "orgpulse": "./src/cli/index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

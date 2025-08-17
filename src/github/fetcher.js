@@ -107,25 +107,9 @@ import path from "path";
 import axios from "axios";
 import { upsertRepo } from "../db/repos.js";
 import { upsertIssue } from "../db/issues.js";
-import Redis from "ioredis";
+import { getCache, setCache } from "../utils/cache.js";
 
-let redis;
-// Avoid connecting to Redis during tests to prevent noise and listener leaks
-if (process.env.REDIS_URL && process.env.NODE_ENV !== 'test') {
-  redis = new Redis(process.env.REDIS_URL);
-  redis.on("connect", () => console.log("✅ Connected to Redis"));
-  redis.on("error", (err) => console.warn("⚠️ Redis connection error:", err.message));
-}
-
-async function getCache(key) {
-  if (!redis) return null;
-  return await redis.get(key);
-}
-
-async function setCache(key, value, ttlSeconds = 3600) {
-  if (!redis) return;
-  await redis.set(key, value, "EX", ttlSeconds);
-}
+// Redis is managed centrally in src/utils/cache.js
 
 const CHECKPOINT_FILE = path.join(process.cwd(), "checkpoint.json");
 

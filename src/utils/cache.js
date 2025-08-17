@@ -27,3 +27,19 @@ export async function setCache(key, value, ttlSeconds = 3600) {
   if (!redis) return;
   await redis.set(key, value, "EX", ttlSeconds);
 }
+
+/**
+ * Close Redis client if open
+ */
+export async function closeCache() {
+  if (!redis) return;
+  try {
+    // try graceful quit first
+    if (typeof redis.quit === 'function') await redis.quit();
+  } catch (err) {
+    // fallback to disconnect
+    try { redis.disconnect(); } catch (e) {}
+  } finally {
+    redis = undefined;
+  }
+}

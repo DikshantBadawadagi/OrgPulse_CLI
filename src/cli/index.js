@@ -1,9 +1,11 @@
+#!/usr/bin/env node
 import { Command } from "commander";
 import dotenv from "dotenv";
 
 import { createRepoIndexes } from "../db/repos.js";
 import { createIssueIndexes } from "../db/issues.js";
 import { connectDB, closeDB } from "../db/connection.js";
+import { closeCache } from "../utils/cache.js";
 
 import { fetchOrgData } from "../github/fetcher.js";
 import { showTopRepos } from "../github/top.js";
@@ -11,6 +13,25 @@ import { exportReposCSV } from "../utils/csv.js";
 import { syncStars } from "../github/syncStars.js";
 
 dotenv.config();
+
+async function shutdown(code = 0) {
+  try {
+    await closeDB();
+  } catch (e) {
+    // ignore
+  }
+  try {
+    await closeCache();
+  } catch (e) {
+    // ignore
+  }
+
+  // Only force-exit when not running under test runner
+  if (process.env.NODE_ENV !== 'test') {
+    // give a moment for stdout to flush
+    setTimeout(() => process.exit(code), 50);
+  }
+}
 
 const program = new Command();
 
@@ -31,7 +52,7 @@ program
     } catch (err) {
       console.error("❌ Init failed:", err.message);
     } finally {
-      await closeDB();
+      await shutdown(0);
     }
   });
 
@@ -47,7 +68,7 @@ program
     } catch (err) {
       console.error("❌ Fetch failed:", err.message);
     } finally {
-      await closeDB();
+      await shutdown(0);
     }
   });
 
@@ -64,7 +85,7 @@ program
     } catch (err) {
       console.error("❌ Top command failed:", err.message);
     } finally {
-      await closeDB();
+      await shutdown(0);
     }
   });
 
@@ -81,7 +102,7 @@ program
     } catch (err) {
       console.error("❌ Export failed:", err.message);
     } finally {
-      await closeDB();
+      await shutdown(0);
     }
   });
 
@@ -97,7 +118,7 @@ program
     } catch (err) {
       console.error("❌ Sync-stars failed:", err.message);
     } finally {
-      await closeDB();
+      await shutdown(0);
     }
   });
 
