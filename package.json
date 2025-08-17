@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec node src/cli/index.js",
+    "dev": "nodemon --watch src --ignore checkpoint.json --ignore node_modules --exec node src/cli/index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "echo \"No tests yet\" && exit 0"
-  },
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "commander": "^14.0.0",
     "csv-writer": "^1.6.0",
     "dotenv": "^17.2.1",
+    "ioredis": "^5.7.0",
     "mongodb": "^6.18.0"
   },
   "devDependencies": {
