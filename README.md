@@ -157,23 +157,23 @@ Retrying in 60 seconds...`
 
 * * * * *
 ### **Screenshots**
-### orgpule init
+### orgpulse init
 
 ![init](screenshots/init.png)
 
-### orgpule fetch expressjs
+### orgpulse fetch expressjs
 
 ![fetch](screenshots/fetch.png)
 
-### orgpule top --org expressjs --metric stars --limit 5
+### orgpulse top --org expressjs --metric stars --limit 5
 
 ![top](screenshots/top.png)
 
-### orgpule export --org expressjs --out repos.csv
+### orgpulse export --org expressjs --out repos.csv
 
 ![export](screenshots/export.png)
 
-### orgpule sync-stars --org expressjs
+### orgpulse sync-stars --org expressjs
 
 ![sync-stars](screenshots/starSync.png)
 
