@@ -182,6 +182,8 @@ Retrying in 60 seconds...`
 ![structure](checkpointStructure-1.png)
 
 ### Please Find DEMO Video & Code Explanation Video in Videos Folder
+### Find the videos in this [Drive folder](https://drive.google.com/drive/folders/1sos73REi6Zoh_6oeLGNM7PABi77oi7sJ?usp=sharing).
+
 
 ### **License**
 
