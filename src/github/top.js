@@ -32,7 +32,6 @@ export async function showTopRepos(org, metric = "stars", limit = 10) {
     return;
   }
 
-  // Build table
   const table = new Table({
     head: ["Name", "Stars", "Forks", "Open Issues", "Language", "Pushed At"],
   });
