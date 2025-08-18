@@ -91,7 +91,7 @@ This will start a local Redis container on port 6379.
 
 The CLI is installed locally and invoked via `orgpulse`:
 
-`# Initialize database and create indexes
+# Initialize database and create indexes
 orgpulse init
 
 # Fetch repos + issues for a GitHub org
@@ -156,6 +156,28 @@ Retrying in 60 seconds...`
 -   **Fix:** Added checkpointing + throttling using Redis cache.
 
 * * * * *
+### **Screenshots**
+### orgpule init
+
+![init](screenshots/init.png)
+
+### orgpule fetch expressjs
+
+![fetch](screenshots/fetch.png)
+
+### orgpule top --org expressjs --metric stars --limit 5
+
+![top](screenshots/top.png)
+
+### orgpule export --org expressjs --out repos.csv
+
+![export](screenshots/export.png)
+
+### orgpule sync-stars --org expressjs
+
+![sync-stars](screenshots/starSync.png)
+
+### Please Find DEMO Video & Code Explanation Video in Videos Folder
 
 ### **License**
 
