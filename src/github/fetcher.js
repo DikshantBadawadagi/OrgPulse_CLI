@@ -109,7 +109,6 @@ import { upsertRepo } from "../db/repos.js";
 import { upsertIssue } from "../db/issues.js";
 import { getCache, setCache } from "../utils/cache.js";
 
-// Redis is managed centrally in src/utils/cache.js
 
 const CHECKPOINT_FILE = path.join(process.cwd(), "checkpoint.json");
 

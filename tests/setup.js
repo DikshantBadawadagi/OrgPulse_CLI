@@ -1,4 +1,3 @@
-// setup.js
 import 'dotenv/config';
 import { jest } from '@jest/globals';
 import mongoose from 'mongoose';

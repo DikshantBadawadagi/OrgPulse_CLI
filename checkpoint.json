@@ -150,7 +150,9 @@
                       "lastPage": {
                         "lastPage": {
                           "lastPage": {
-                            "lastPage": null
+                            "lastPage": {
+                              "lastPage": null
+                            }
                           }
                         }
                       }
