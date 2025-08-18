@@ -177,6 +177,10 @@ Retrying in 60 seconds...`
 
 ![sync-stars](screenshots/starSync.png)
 
+### Checkpoint Structure
+
+![structure](checkpointStructure-1.png)
+
 ### Please Find DEMO Video & Code Explanation Video in Videos Folder
 
 ### **License**
