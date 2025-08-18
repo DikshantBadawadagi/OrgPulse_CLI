@@ -52,8 +52,7 @@ OrgPulse is a command-line tool for fetching GitHub organization repositories, s
 
 ### **Clone the repository**
 
-`git clone https://github.com/dikshantbadawadagi/github-cli-tool.git
-cd github-cli-tool`
+`git clone https://github.com/dikshantbadawadagi/github-cli-tool.git`
 
 * * * * *
 
@@ -93,19 +92,19 @@ This will start a local Redis container on port 6379.
 The CLI is installed locally and invoked via `orgpulse`:
 
 `# Initialize database and create indexes
-npx orgpulse init
+orgpulse init
 
 # Fetch repos + issues for a GitHub org
-npx orgpulse fetch <org-name> [--since YYYY-MM-DD]
+orgpulse fetch <org-name> [--since YYYY-MM-DD]
 
 # Show top repos
-npx orgpulse top --org <org-name> --metric stars --limit 5
+orgpulse top --org <org-name> --metric stars --limit 5
 
 # Export repos to CSV
-npx orgpulse export --org <org-name> --out repos.csv
+orgpulse export --org <org-name> --out repos.csv
 
 # Sync stars/forks for existing repos
-npx orgpulse sync-stars --org <org-name>`
+orgpulse sync-stars --org <org-name>`
 
 > Replace `npx orgpulse` with `npm start --` if not globally installed.
 
@@ -151,7 +150,7 @@ OrgPulse handles GitHub API rate limits gracefully. If a 403/429 occurs, the CLI
 
 Encountered rate-limit / 403:
 
-`❌ Fetch failed: API rate limit exceeded (403)
+`Fetch failed: API rate limit exceeded (403)
 Retrying in 60 seconds...`
 
 -   **Fix:** Added checkpointing + throttling using Redis cache.
