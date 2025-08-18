@@ -18,17 +18,14 @@ async function shutdown(code = 0) {
   try {
     await closeDB();
   } catch (e) {
-    // ignore
   }
   try {
     await closeCache();
   } catch (e) {
-    // ignore
+    
   }
 
-  // Only force-exit when not running under test runner
   if (process.env.NODE_ENV !== 'test') {
-    // give a moment for stdout to flush
     setTimeout(() => process.exit(code), 50);
   }
 }
@@ -48,9 +45,9 @@ program
       await connectDB();
       await createRepoIndexes();
       await createIssueIndexes();
-      console.log("✅ Indexes ready");
+      console.log("Indexes ready");
     } catch (err) {
-      console.error("❌ Init failed:", err.message);
+      console.error("Init failed:", err.message);
     } finally {
       await shutdown(0);
     }
@@ -64,9 +61,9 @@ program
     try {
       await connectDB();
       await fetchOrgData(org, options.since);
-      console.log(`✅ Fetch completed for org: ${org}`);
+      console.log(`Fetch completed for org: ${org}`);
     } catch (err) {
-      console.error("❌ Fetch failed:", err.message);
+      console.error("Fetch failed:", err.message);
     } finally {
       await shutdown(0);
     }
@@ -83,7 +80,7 @@ program
       await connectDB();
       await showTopRepos(options.org, options.metric, options.limit);
     } catch (err) {
-      console.error("❌ Top command failed:", err.message);
+      console.error("Top command failed:", err.message);
     } finally {
       await shutdown(0);
     }
@@ -98,9 +95,9 @@ program
     try {
       await connectDB();
       await exportReposCSV(options.org, options.out);
-      console.log(`✅ Repos exported to ${options.out}`);
+      console.log(`Repos exported to ${options.out}`);
     } catch (err) {
-      console.error("❌ Export failed:", err.message);
+      console.error("Export failed:", err.message);
     } finally {
       await shutdown(0);
     }
@@ -114,9 +111,9 @@ program
     try {
       await connectDB();
       await syncStars(options.org);
-      console.log(`✅ Stars/forks synced for ${options.org}`);
+      console.log(`Stars/forks synced for ${options.org}`);
     } catch (err) {
-      console.error("❌ Sync-stars failed:", err.message);
+      console.error("Sync-stars failed:", err.message);
     } finally {
       await shutdown(0);
     }

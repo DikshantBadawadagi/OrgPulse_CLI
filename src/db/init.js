@@ -4,7 +4,7 @@ import { createIssueIndexes } from "./issues.js";
 async function initDB() {
   await createRepoIndexes();
   await createIssueIndexes();
-  console.log("✅ All indexes initialized");
+  console.log("All indexes initialized");
   process.exit(0);
 }
 

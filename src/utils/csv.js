@@ -33,5 +33,5 @@ export async function exportReposCSV(org, outFile) {
 
   await csvWriter.writeRecords(repos);
 
-  console.log(`✅ CSV exported to ${outFile}`);
+  console.log(`CSV exported to ${outFile}`);
 }

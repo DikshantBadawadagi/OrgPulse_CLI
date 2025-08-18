@@ -46,7 +46,6 @@ async function main() {
     });
     const address = reserve.address();
     const hostPort = address.port;
-    // close the reserve so docker can bind the port
     reserve.close();
 
     execSync(`docker run -d --name ${name} -p ${hostPort}:27017 mongo:6.0`, { stdio: 'inherit' });
@@ -54,7 +53,6 @@ async function main() {
     console.log(`> Waiting for MongoDB to accept connections on localhost:${hostPort}...`);
     await waitForPort('127.0.0.1', hostPort, 60000);
 
-    // run tests with env pointing to local mongo
     const env = Object.assign({}, process.env, { MONGO_URI: `mongodb://127.0.0.1:${hostPort}/githubcli_test` });
 
     console.log('> Running tests with MONGO_URI=', env.MONGO_URI);
@@ -65,7 +63,6 @@ async function main() {
 
     child.on('exit', (code) => {
       console.log('> Tests exited with code', code);
-      // stop and remove container
       try { execSync(`docker rm -f ${name}`, { stdio: 'inherit' }); } catch (e) { console.warn('> Failed to remove docker container', e.message); }
       process.exit(code || 0);
     });

@@ -10,7 +10,7 @@ export async function createIssueIndexes() {
 
   await collection.createIndex({ repo: 1, state: 1 });
 
-  console.log("✅ Issue indexes created");
+  console.log("Issue indexes created");
 }
 
 export async function upsertIssue(issueData) {

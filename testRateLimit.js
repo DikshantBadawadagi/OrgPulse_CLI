@@ -1,7 +1,7 @@
 import pLimit from "p-limit";
 import { fetchOrgData } from "./src/github/fetcher.js";
 
-const limit = pLimit(5); // max 5 concurrent requests
+const limit = pLimit(5); 
 
 async function spamFetch() {
   const org = "expressjs";

@@ -18,13 +18,13 @@ export async function connectDB() {
   await client.connect();
 
   db = client.db(); 
-  console.log("✅ Connected to MongoDB Atlas");
+  console.log("Connected to MongoDB Atlas");
   return db;
 }
 
 export async function closeDB() {
   if (client) {
     await client.close();
-    console.log("🛑 MongoDB connection closed");
+    console.log("MongoDB connection closed");
   }
 }

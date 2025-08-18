@@ -99,7 +99,7 @@
 //     }
 //   }
 
-//   console.log("✅ All repos + issues fetched and stored.");
+//   console.log("All repos + issues fetched and stored.");
 // }
 
 import fs from "fs";
@@ -146,7 +146,7 @@ async function handleGithubError(err, attempt = 1) {
     if (remaining === "0" && reset) {
       const now = Math.floor(Date.now() / 1000);
       const wait = (parseInt(reset) - now + 1) * 1000;
-      console.log(`⚠️ Rate limit reached. Sleeping for ${Math.ceil(wait / 1000)}s...`);
+      console.log(`Rate limit reached. Sleeping for ${Math.ceil(wait / 1000)}s...`);
       await sleep(wait);
       return true; 
     }
@@ -154,12 +154,12 @@ async function handleGithubError(err, attempt = 1) {
 
   if (attempt < maxAttempts) {
     const backoff = Math.pow(3, attempt - 1) * 1000;
-    console.log(`⚠️ Request failed, retrying in ${backoff / 1000}s (attempt ${attempt})`);
+    console.log(`Request failed, retrying in ${backoff / 1000}s (attempt ${attempt})`);
     await sleep(backoff);
     return true; 
   }
 
-  console.error("❌ Request failed after retries:", err.message);
+  console.error("Request failed after retries:", err.message);
   return false; 
 }
 

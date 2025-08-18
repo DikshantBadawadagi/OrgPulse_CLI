@@ -10,7 +10,7 @@ export async function createRepoIndexes() {
 
   await collection.createIndex({ org: 1, stars: -1 });
 
-  console.log("✅ Repo indexes created");
+  console.log("Repo indexes created");
 }
 
 export async function upsertRepo(repoData) {

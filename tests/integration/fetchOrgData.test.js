@@ -13,20 +13,18 @@ let skipIntegration = false;
 
 beforeAll(
   async () => {
-    // Allow extra time for mongodb-memory-server to prepare binaries on CI/network-limited machines
     try {
       mongoServer = await MongoMemoryServer.create({
         binary: { version: "6.0.7" },
       });
     } catch (err) {
-      console.warn("⚠️ mongodb-memory-server failed to start, skipping this integration test:", err.message);
+      console.warn("mongodb-memory-server failed to start, skipping this integration test:", err.message);
       skipIntegration = true;
       return;
     }
 
     const uri = mongoServer.getUri();
 
-    // Make the in-memory server available to code that uses process.env.MONGO_URI
     process.env.MONGO_URI = uri;
     process.env.MONGODB_URI = uri;
 
@@ -58,7 +56,7 @@ describe("fetchOrgData integration", () => {
     "handles 2 pages of repos and upserts issues correctly",
     async () => {
       if (skipIntegration) {
-        console.warn('⚠️ Skipping fetchOrgData integration test due to mongodb-memory-server startup failure');
+        console.warn('Skipping fetchOrgData integration test due to mongodb-memory-server startup failure');
         return;
       }
       const org = "testorg";

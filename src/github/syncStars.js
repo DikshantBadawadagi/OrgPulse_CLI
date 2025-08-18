@@ -44,11 +44,11 @@ export async function syncStars(org) {
       };
 
       await upsertRepo(updated);
-      console.log(`Updated ${repo.name}: ⭐ ${data.stargazers_count}, 🍴 ${data.forks_count}`);
+      console.log(`Updated ${repo.name}: Stars: ${data.stargazers_count}, Forks: ${data.forks_count}`);
     } catch (err) {
       console.error(`Failed to update ${repo.name}: ${err.message}`);
     }
   }
 
-  console.log("✅ Stars/forks sync completed.");
+  console.log("Stars/forks sync completed.");
 }
